@@ -1,0 +1,77 @@
+html {
+  background: url(https://images.unsplash.com/photo-1496661415325-ef852f9e8e7c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=799&q=80);
+  background-size: cover;
+  font-family: 'Ubuntu', sans-serif;
+  text-align: center;
+  font-size: 10px;
+}
+
+body {
+  margin: 0;
+  font-size: 2rem;
+  display: flex;
+  flex: 1;
+  min-height: 100vh;
+  align-items: center;
+}
+
+.clock {
+  width: 30rem;
+  height: 30rem;
+  border: 20px solid #E5E8E8;
+  border-radius: 50%;
+  margin: 50px auto;
+  position: relative;
+  padding: 2rem;
+  box-shadow:
+    0 0 0 4px rgba(0,0,0,0.1),
+    inset 0 0 0 3px #F8F9F9,
+    inset 0 0 10px #2C3E50,
+    0 0 10px rgba(0,0,0,0.2);
+}
+
+.clock-face {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: translateY(-3px); /* account for the height of the clock hands */
+}
+
+.center-dot {
+  position: absolute;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  top: 145px;
+  left: 145px;
+  transform: translateX(-2px);
+  background: #E5E8E8;
+  z-index: 1;
+}
+
+.hand {
+  width: 50%;
+  height: 6px;
+  background: black;
+  position: absolute;
+  top: 50%;
+  transform: rotate(90deg); /* makes hands point towards 12 as default */
+  transform-origin: 100%; /* makes rotate pivot from right hand point of hand */
+  transition: all 0.1s; /* animations happen after 0.1s */
+  transition-timing-function: cubic-bezier(0.52, 2.46, 0.65, 0.8); /* creates snap back second hand */
+}
+
+.hour-hand {
+  width: 35%;
+  left: 45px;
+}
+
+.min-hand {
+  width: 45%;
+  left: 15px;
+}
+
+.second-hand {
+  background: #A93226;
+  height: 3px;
+}
