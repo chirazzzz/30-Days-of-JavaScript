@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML5 Canvas</title>
+</head>
+<body>
+<canvas id="draw" width="800" height="800"></canvas>
+<script>
+  const canvas = document.querySelector('#draw');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  ctx.strokeStyle = '#BADA55';
+  ctx.lineJoin = 'round';
+  ctx.lineCap = 'round';
+  ctx.lineWidth = 10;
+
+  let isDrawing = false; // dummy variable so drawing happens when cursor moves AND button is clicked
+  let lastX = 0; // dummy variable - every line needs starting X value
+  let lastY = 0; // dummy variable - every line needs starting Y value
+  let hue = 0;
+  let direction = true;
+  ctx.globalCompositeOperation = screen;
+
+  function draw(e) {
+    if (!isDrawing) return; // stop the func running when user hasn't moused down
+    console.log(e); // onlt logs if user has mousedown
+    ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+    ctx.beginPath();
+    // starting position for line when user mousedowns
+    ctx.moveTo(lastX, lastY);
+    // ending position of line
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.stroke();
+    [lastX, lastY] = [e.offsetX, e.offsetY]; // array destructuring same as lastX = e.offsetX & lastY = e.offsetY;
+    hue += 2; // hsl starts at 0 = red goes to 360 = red and cycles through colours. This changes line colour
+    if(hue >= 360) {
+      hue = 0; // resets hue variable
+    }
+
+    if(ctx.lineWidth >= 25 || ctx.lineWidth <= 1) {
+      direction = !direction; // this toggles direction when lineWidth over 25 OR under 1
+    }
+
+    if(direction) { // direction keeps toggling from true to false
+      ctx.lineWidth++; // increment lineWidth to 25
+    } else {
+      ctx.lineWidth--; // decrement lineWidth to 1
+    }
+  }
+
+  canvas.addEventListener('mousedown', (e) => {
+    isDrawing = true;
+    /* fixed bug where line starts from x=0 y=0 and is one continuous line.  mousedown is first event 
+    so below we update lastX & last Y to current mousedown X&Y positions. Then mousemove rund draw() */
+    [lastX, lastY] = [e.offsetX, e.offsetY]; 
+  });
+
+
+  canvas.addEventListener('mousemove', draw);
+  canvas.addEventListener('mouseup', () => isDrawing = false);
+  canvas.addEventListener('mouseout', () => isDrawing = false); // In case user leaves window with cursor
+
+</script>
+
+<style>
+  html, body {
+    margin: 0;
+  }
+
+  /* canvas {
+    width: 100vw;
+  } */
+</style>
+
+</body>
+</html>
