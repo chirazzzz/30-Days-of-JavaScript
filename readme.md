@@ -6,7 +6,7 @@
 * Day 3 - [CSS Variables](./Day%203%20-%20CSS%20Variables)
 * Day 4 - [Array Cardio 1](./Day%204%20-%20Array%20Cardio%201)
 * Day 5 - [Flex Panel Gallery](./Day%205%20-%20Flex%20Panel%20Gallery)
-* Day 6 - [Type Ahead with fetch()](./Day%206%20-%20Type%20Ahead%20with%20fetch())
+* Day 6 - [Type Ahead with fetch](./Day%206%20-%20Type%20Ahead%20with%20fetch)
 * Day 7 - [Array Cardio 2](./Day%207%20-%20Array%20Cardio%202)
 * Day 8 - [Fun with HTML5 Canvas](./Day%208%20-%20Fun%20with%20HTML5%20Canvas)
 * Day 9 - [Dev Tools Domination](./Day%209%20-%20Dev%20Tools%20Domination)
