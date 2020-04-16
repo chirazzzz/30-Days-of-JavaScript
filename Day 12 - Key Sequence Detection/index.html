@@ -3,27 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <title>Key Detection</title>
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
 </head>
 <body>
-<script>
-  const keysPressed = [];
-  const konamiCode = 'chirazzzz';
   
-  // ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 
-  //                     'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+<div class="wrapper">
+  <h1>Detecting keys</h1>
+  <div class="codes">
+    <h4>To see the hidden secrets type my Github username:</h4>
+    <span class="large-code"> chirazzzz </span>
+  </div>
+</div>
 
-  window.addEventListener('keyup', (e) => {
-    console.log(e.key);
-    keysPressed.push(e.key);
-    // console.log(-keysPressed.length);
-    keysPressed.splice(-konamiCode.length - 1, keysPressed.length - konamiCode.length);
-    if (keysPressed.join('').includes(konamiCode)) {
-      console.log('You did it!');
-      cornify_add();
-    }
-    console.log(keysPressed);
-  });
-</script>
+<script src="script.js"></script>
 </body>
 </html>
