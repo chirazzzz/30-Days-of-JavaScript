@@ -13,3 +13,4 @@
 * Day 10 - [Hold Shift and Check Checkboxes](./Day%2010%20-%20Hold%20Shift%20and%20Check%20Checkboxes)
 * Day 11 - [Custom Video Player](./Day%2011%20-%20Custom%20Video%20Player)
 * Day 12 - [Key Sequence Detection](./Day%2012%20-%20Key%20Sequence%20Detection)
+* Day 13 - [Slide in on Scroll](./Day%2013%20-%20Slide%20in%20on%20Scroll)
