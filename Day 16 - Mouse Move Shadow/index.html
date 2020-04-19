@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mouse Shadow</title>
+</head>
+<body>
+
+  <div class="hero">
+    <h1 contenteditable>Chirag💣🔥</h1>
+  </div>
+
+  <style>
+  html {
+    color: black;
+    font-family: sans-serif;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(23, 32, 42, 1);
+  }
+
+  h1 {
+    font-size: 100px;
+  }
+  </style>
+
+<script>
+  const hero = document.querySelector('.hero');
+  const text = document.querySelector('h1');
+  const walk = 20; // px
+
+  function shadow(e) {
+    // const { offsetWidth: width, offsetHeight: height } = hero; destructuring 
+    const width = hero.offsetWidth;
+    const height = hero.offsetHeight;
+    // console.log(e);
+    // console.log(width);
+    // console.log(height);
+    let { offsetX: x, offsetY: y } = e; // x = e.offsetX && y = e.offsetY => non destructured code
+    /* ISSUE - getting x, y values of child h1 element within hero which resets to (0,0). So need to modify x, y */
+    // console.log(`What element is 'this' ${this}`); this = hero div coz we listen on hero element.
+    // console.log(`What triggers mousemove? ${e.target}`); e.target = h1 element which triggers mousemove event
+
+    if (this !== e.target) { // if these are different => mousemove happens over h1 element
+      x = x + e.target.offsetLeft; // take x value over h1 (which is reset) + space from left edge of hero
+      y = y + e.target.offsetTop; // take y value over h1 (which is reset) + space from top top of hero
+    }
+    console.log(x, y); // shows x & y are not reset when mousemoving over h1 element
+
+    // How far should the text shadow move? xWalk & yWalk calculate this
+            // walk = 20 so we want range between -10 and 10
+    const xWalk = Math.round((x / width * walk) - (walk / 2)); // offsets value range between 10 and -10
+    const yWalk = Math.round((y / height * walk) - (walk / 2)); // Math.round just convert to integer
+
+    text.style.textShadow = `
+      ${xWalk}px ${yWalk}px 0 rgba(192, 57, 43, 0.7),
+      ${xWalk * -1}px ${yWalk}px 0 rgba(88, 214, 141, 0.5),
+      ${yWalk}px ${xWalk * -1}px 0 rgba(41, 128, 185, 0.8),
+      ${yWalk * -1}px ${xWalk}px 0 rgba(155, 89, 182, 0.6)
+    `;
+  }
+
+  hero.addEventListener('mousemove', shadow);
+</script>
+</body>
+</html>

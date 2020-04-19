@@ -14,3 +14,6 @@
 * Day 11 - [Custom Video Player](./Day%2011%20-%20Custom%20Video%20Player)
 * Day 12 - [Key Sequence Detection](./Day%2012%20-%20Key%20Sequence%20Detection)
 * Day 13 - [Slide in on Scroll](./Day%2013%20-%20Slide%20in%20on%20Scroll)
+* Day 14 - [JavaScript References VS Copying](./Day%2014%20-%20JavaScript%20References%20VS%20Copying)
+* Day 15 - [LocalStorage](./Day%2015%20-%20LocalStorage)
+* Day 16 - [Mouse Move Shadow](./Day%2016%20-%20Mouse%20Move%20Shadow)
