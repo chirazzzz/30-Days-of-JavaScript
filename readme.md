@@ -17,3 +17,4 @@
 * Day 14 - [JavaScript References VS Copying](./Day%2014%20-%20JavaScript%20References%20VS%20Copying)
 * Day 15 - [LocalStorage](./Day%2015%20-%20LocalStorage)
 * Day 16 - [Mouse Move Shadow](./Day%2016%20-%20Mouse%20Move%20Shadow)
+* Day 17 - [Sort Without Articles](./Day%2017%20-%20Sort%20Without%20Articles)
