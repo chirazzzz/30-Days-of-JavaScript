@@ -89,7 +89,7 @@
       // itemsList.innerHTML = ''; This line cleared <li> but localStorage data remained
       populateList([], itemsList); // visually update our page
       localStorage.clear(); // Have to clear localStorage
-      items = '';
+      items.splice(0, items.length); // Clears items to ensure li's stay deleted
     }
 
     function checkItems() {
