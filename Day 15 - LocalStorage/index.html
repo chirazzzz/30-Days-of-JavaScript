@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!--   
+  <!--   
       Fish SVG Cred:
       https://thenounproject.com/search/?q=fish&i=589236
    -->
@@ -23,16 +23,96 @@
       <input type="text" name="item" placeholder="Item Name" required>
       <input type="submit" value="+ Add Item">
     </form>
+    <div class="buttons-row">
+      <button id="delete">Delete All</button>
+      <button id="check">Check All</button>
+      <button id="uncheck">Uncheck All</button>
+    </div>
   </div>
 
-<script>
-  const addItems = document.querySelector('.add-items');
-  const itemsList = document.querySelector('.plates');
-  const items = [];
+  <script>
+    const addItems = document.querySelector('.add-items');
+    const itemsList = document.querySelector('.plates');
+    /* On page load we check if any data is in local storage || fallback to empty array*/
+    const items = JSON.parse( localStorage.getItem('items') ) || []; // JSON.parse converts string stored in 
+                                                                     // local storage back to obj with getItem                                                                 
+    const deleteAllButton = document.querySelector('#delete');
+    const checkAllButton = document.querySelector('#check');
+    const uncheckAllButton = document.querySelector('#uncheck');
 
-</script>
+    function addItem(e) {
+      // Issue with 'submit' event. Must use prevent default to stop automatic page reload
+      e.preventDefault();
+      // select form input. 'this' refers to addItems. Must put name=item in '' and []
+      const text = this.querySelector('[name=item]').value;
+      const item = {
+        text, // in ES6 if have prop name and value are same we don't have to write text: text
+        done: false
+      }
 
+      items.push(item);
+      populateList(items, itemsList); // pass through specific args here.
+      localStorage.setItem('items', JSON.stringify(items)); // localStorage stores strings so JSON.stringify needed with setItem
+      this.reset(); // form elements have reset() method which clears all data
+    }
 
+    // This func actaully populates entire list everytime - might have performance issues
+    function populateList(plates = [], platesList) { // args are: what plates to add, where to add them
+    // Haven't inc items and itemsList as args so this func can accept any data and still work
+      const update = plates.map((plate, i) => {
+        // input and label are linked with id and for values
+        return `
+          <li>
+            <input type="checkbox" data-index="${i}" id="plate${i}" ${plate.done ? 'checked' : ''}>
+            <label for="plate${i}">${plate.text}</label>
+          </li>
+          `;
+        }).join(''); // changes map() output from array to string
+        platesList.innerHTML = update;
+    }
+
+    // Watch this Wes Bos video from 21:00 for good explaination of event delegation
+    function toggleDone(e) { // Event delegation func - more info https://javascript.info/event-delegation
+      // We only want clicks on label and input to register
+      if (!e.target.matches('input')) return; // Skip this unless it's an input
+      // console.log(e.target);  clicks in ul or li don't register
+
+      const el = e.target; // item clicked
+      const index = el.dataset.index; // included data-index to easily get index value of each item
+      items[index].done = !items[index].done // change 'done' property
+
+      localStorage.setItem('items', JSON.stringify(items)); // localStorage stores changed 'done' value
+      populateList(items, itemsList); // visually update our page
+    }
+
+    function deleteItems() {
+      // itemsList.innerHTML = ''; This line cleared <li> but localStorage data remained
+      populateList([], itemsList); // visually update our page
+      localStorage.clear(); // Have to clear localStorage
+      items = '';
+    }
+
+    function checkItems() {
+      items.map(item => item.done = true);
+      localStorage.setItem('items', JSON.stringify(items)); // localStorage stores changed 'done' value
+      populateList(items, itemsList); // visually update our page
+    }
+
+    function uncheckItems() {
+      items.map(item => item.done = false);
+      localStorage.setItem('items', JSON.stringify(items)); // localStorage stores changed 'done' value
+      populateList(items, itemsList); // visually update our page
+    }
+
+    // listen for submit event which covers button click and enter key
+    addItems.addEventListener('submit', addItem);
+    itemsList.addEventListener('click', toggleDone); // listen on itemsList which holds all items
+    deleteAllButton.addEventListener('click', deleteItems);
+    checkAllButton.addEventListener('click', checkItems);
+    uncheckAllButton.addEventListener('click', uncheckItems);
+
+    populateList(items, itemsList); // call func on page load to access localStorage
+
+  </script>
 </body>
 </html>
-
