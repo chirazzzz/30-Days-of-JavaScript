@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sort Without Articles</title>
+</head>
+<body>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: url("https://source.unsplash.com/nDqA4d5NL0k/2000x2000");
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    #bands {
+      list-style: inside square;
+      font-size: 20px;
+      background: white;
+      width: 500px;
+      margin: auto;
+      padding: 0;
+      box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.05);
+    }
+    
+    #bands li {
+      border-bottom: 1px solid #efefef;
+      padding: 10px;
+    }
+    
+    #bands li:last-child {
+      border-bottom: 0;
+    }
+
+    a {
+      color: #ffc600;
+      text-decoration: none;
+    }
+
+  </style>
+
+  <ul id="bands"></ul>
+
+<script>
+
+const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 
+              'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 
+              'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
+
+function removeArticles(bandName) {
+  /* regex finds all characters with 'a ' 'the ' 'an ' NOT 'an' which includes anywhere
+     replace() takes these "a" "an" "the" which start strings and replaces them with empty ''*/
+  return bandName.replace(/^(a |the |an )/i, '');  
+}
+
+// sort is mutable so it changes the original bands array. read more - https://itnext.io/how-to-sort-an-array-in-javascript-f6cc7a26b34d
+const sortedBands = bands.sort((a, b) => {
+  // we sort bands array by using removeArticles(a) > removeArticles(b) which doesn't affect original bands string
+  return removeArticles(a) > removeArticles(b) ? 1 : -1;
+});
+
+const bandList = document.querySelector('#bands');
+
+// Map through newly sorted bands that don't have their strings changed
+const result = sortedBands.map(band => {
+  return `
+    <li>${band}</li>
+  `;
+}).join('');
+
+bandList.innerHTML = result;
+
+console.log(bands); // returns exactly the same
+console.log(sortedBands); // returns exactly the same
+
+</script>
+
+</body>
+</html>
