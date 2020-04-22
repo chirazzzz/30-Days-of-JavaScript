@@ -18,3 +18,4 @@
 * Day 15 - [LocalStorage](./Day%2015%20-%20LocalStorage)
 * Day 16 - [Mouse Move Shadow](./Day%2016%20-%20Mouse%20Move%20Shadow)
 * Day 17 - [Sort Without Articles](./Day%2017%20-%20Sort%20Without%20Articles)
+* Day 18 - [Adding Up Times with Reduce](./Day%2017%20-%20Adding%20Up%20Times%20with%20Reduce)
