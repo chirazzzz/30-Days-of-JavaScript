@@ -19,3 +19,5 @@
 * Day 16 - [Mouse Move Shadow](./Day%2016%20-%20Mouse%20Move%20Shadow)
 * Day 17 - [Sort Without Articles](./Day%2017%20-%20Sort%20Without%20Articles)
 * Day 18 - [Adding Up Times with Reduce](./Day%2017%20-%20Adding%20Up%20Times%20with%20Reduce)
+* Day 19 - [Webcam Fun](./Day%2019%20-%20Webcam%20Fun)
+* Day 20 - [Speech Detection](./Day%2020%20-%20Speech%20Detection)
