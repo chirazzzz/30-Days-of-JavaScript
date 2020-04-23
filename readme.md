@@ -21,3 +21,4 @@
 * Day 18 - [Adding Up Times with Reduce](./Day%2017%20-%20Adding%20Up%20Times%20with%20Reduce)
 * Day 19 - [Webcam Fun](./Day%2019%20-%20Webcam%20Fun)
 * Day 20 - [Speech Detection](./Day%2020%20-%20Speech%20Detection)
+* Day 21 - [Geolocation](./Day%2020%20-%20Geolocation)
