@@ -22,3 +22,4 @@
 * Day 19 - [Webcam Fun](./Day%2019%20-%20Webcam%20Fun)
 * Day 20 - [Speech Detection](./Day%2020%20-%20Speech%20Detection)
 * Day 21 - [Geolocation](./Day%2020%20-%20Geolocation)
+* Day 22 - [Follow Along Link Highlighter](./Day%2020%20-%20Follow%20Along%20Link%20Highlighter)
